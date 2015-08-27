@@ -1,6 +1,7 @@
 from gender import Gender
 from pos_tagger import POS
 from flask import Flask, render_template, request
+nltk.data.path.append('./nltk_data/')
 app = Flask(__name__)
 
 @app.route('/')
