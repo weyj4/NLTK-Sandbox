@@ -1,6 +1,7 @@
 import nltk
 import random
 from nltk.corpus import names
+nltk.data.path.append('./nltk_data/')
 
 labeled_names = ([(name, 'male') for name in names.words('male.txt')] +
                 [(name, 'female') for name in names.words('female.txt')])

@@ -1,5 +1,6 @@
 import nltk
 from nltk.corpus import brown
+nltk.data.path.append('./nltk_data/')
 
 class POS:
 
