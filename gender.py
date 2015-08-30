@@ -15,9 +15,7 @@ class Gender:
 
     def gender_features(self, name):
         return {'suffix1': name[-1:],
-                'suffix2': name[-2:],
-                'prefix1': name[1],
-                'prefix2': name[:2]}
+                'suffix2': name[-2:]}
 
     def get_nltk_data(self):
         labeled_names = ([(name, 'male') for name in names.words('male.txt')] +
@@ -29,6 +27,7 @@ class Gender:
 
     def train_classifier(self):
         self.classifier = nltk.NaiveBayesClassifier.train(self.train_set)
+        print self.classifier.show_most_informative_features()
         self.accuracy = nltk.classify.accuracy(self.classifier, self.test_set)
         
     def classifier_classify(self, name):
@@ -37,6 +36,7 @@ class Gender:
     def run(self):
         self.get_nltk_data()
         self.train_classifier()
+        print self.accuracy
         return {'prediction': self.classifier_classify(self.name), 'accuracy': self.accuracy} 
 
 
